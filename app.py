@@ -45,7 +45,7 @@ def send_tweet():
 
 
 if __name__ == '__main__':
-  schedule.every(2).minutes.do(send_tweet)
+  schedule.every().hour.at(":00").do(send_tweet)
 
   while True:
     schedule.run_pending()
