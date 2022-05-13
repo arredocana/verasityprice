@@ -1,10 +1,8 @@
 import os
 import json
-import requests
 from requests import Session
 import schedule
 import logging
-from bs4 import BeautifulSoup
 from config import create_twitter_api
 
 # create logger
@@ -38,28 +36,6 @@ def get_price(coin_id='3816', currency='USD'):
     return price
   except (ConnectionError, Timeout, TooManyRedirects):
     return 0
-
-# def bot_send_text(bot_message):
-    
-#     bot_token = os.environ['TOKEN']
-#     bot_chatID = os.environ['CHAT_ID']
-#     send_text = f'https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={bot_chatID}&parse_mode=Markdown&text={bot_message}'
-
-#     response = requests.get(send_text)
-
-#     return response
-
-
-# COIN = 'verasity-vra'
-
-# def bot_scraping(currency: str = 'USD'):
-#     url = requests.get(f'https://awebanalysis.com/es/coin-details/{COIN}/{currency}')
-#     soup = BeautifulSoup(url.content, 'html.parser')
-#     result = soup.find('td', {'class': 'wbreak_word align-middle coin_price'})
-#     format_result = result.text
-
-#     return format_result
-
 
 def send_tweet():
     vra_price = f'${get_price()} | €{get_price(currency="EUR")} \n#verasity $VRA'
