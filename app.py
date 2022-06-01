@@ -10,7 +10,6 @@ logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
 # COINMARKETCAP
-
 API_KEY = os.environ['COINMARKETCAP']
 
 
